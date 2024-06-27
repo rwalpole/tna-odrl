@@ -1,0 +1,23 @@
+@prefix cat:  <http://cat.nationalarchives.gov.uk/> .
+@prefix nat:  <http://www.nationalarchives.gov.uk/> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix odrl: <http://www.w3.org/ns/odrl/2/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://cat.nationalarchives.gov.uk> .
+
+# Open Description Policy as Natural Language Expression
+# ======================================================
+# The National Archives (assigner) grants (permission) The Public (assignees)
+# that a record description (asset) may be read (action).
+
+cat:policy.Open_Description
+    rdf:type         odrl:Policy, odrl:Offer ;
+    rdfs:label       "Open Description"^^xsd:string ;
+    odrl:conflict    odrl:perm ;
+    odrl:profile     nat:odrl-profile ;
+    odrl:inheritFrom cat:policy.Closed_Description ;
+    odrl:permission  [ rdf:type      odrl:Permission ;
+                       odrl:assigner cat:The_National_Archives ;
+                       odrl:assignee cat:The_Public ;
+                       odrl:action   odrl:readDescription ] .

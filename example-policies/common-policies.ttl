@@ -1,0 +1,138 @@
+@prefix cat: <http://cat.nationalarchives.gov.uk/> .
+@prefix nat: <http://www.nationalarchives.gov.uk/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix odrl: <http://www.w3.org/ns/odrl/2/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://cat.nationalarchives.gov.uk> .
+
+cat:policy.Closure rdf:type odrl:Policy, odrl:Offer ;
+	rdfs:label "Closure"^^xsd:string ;
+	odrl:conflict odrl:perm ;
+	odrl:profile nat:odrl-profile ;
+	odrl:prohibition [
+    	rdf:type odrl:Prohibition ;
+    	odrl:assigner cat:The_National_Archives ;
+    	odrl:assignee cat:The_Public ;
+        odrl:action odrl:read 
+    ] .
+
+cat:policy.Closed_Description rdf:type odrl:Offer ;
+	rdfs:label "Closed Description"^^xsd:string ;
+	odrl:conflict odrl:perm ;
+	odrl:profile nat:odrl-profile ;
+	odrl:inheritFrom cat:policy.Closure .
+
+cat:policy.Open_Description rdf:type odrl:Policy, odrl:Offer ;
+	rdfs:label "Open Description"^^xsd:string ;
+	odrl:conflict odrl:perm ;
+	odrl:profile nat:odrl-profile ;
+	odrl:inheritFrom cat:policy.Closed_Description ;
+    odrl:permission [
+    	rdf:type odrl:Permission ;
+    	odrl:assigner cat:The_National_Archives ;
+    	odrl:assignee cat:The_Public ;
+        odrl:action odrl:readDescription
+    ] .
+
+cat:policy.Open_Document rdf:type odrl:Policy, odrl:Offer ;
+	rdfs:label "Open Document"^^xsd:string ;
+	odrl:conflict odrl:perm ;
+	odrl:profile nat:odrl-profile ;
+	odrl:inheritFrom cat:policy.Closed_or_Retained_Document ;
+    odrl:permission [
+    	rdf:type odrl:Permission ;
+    	odrl:assigner cat:The_National_Archives ;
+    	odrl:assignee cat:The_Public ;
+        odrl:action odrl:readDescription
+    ] .
+
+cat:policy.Open_on_Transfer rdf:type odrl:Policy ;
+	rdfs:label "Open on Transfer"^^xsd:string ;
+	odrl:conflict odrl:perm ;
+	odrl:profile nat:odrl-profile ;
+	odrl:inheritFrom cat:policy.Open_Document .
+
+cat:policy.Open_Immediately rdf:type odrl:Policy ;
+	rdfs:label "Open Immediately"^^xsd:string ;
+	odrl:conflict odrl:perm ;
+	odrl:profile nat:odrl-profile ;
+	odrl:inheritFrom cat:policy.Open_Document .
+
+cat:policy.Closed_for_26_years_from_unknown_date rdf:type odrl:Policy, odrl:Offer;
+	rdfs:label "Closed for 26 years from unknown date"^^xsd:string ;
+	odrl:conflict odrl:perm;
+	odrl:profile nat:odrl-profile ;
+	odrl:inheritFrom cat:policy.Open_Document .
+
+cat:policy.Closed_for_29_years_from_unknown_date rdf:type odrl:Policy, odrl:Offer;
+	rdfs:label "Closed for 29 years from unknown date"^^xsd:string ;
+	odrl:conflict odrl:perm;
+	odrl:profile nat:odrl-profile ;
+	odrl:inheritFrom cat:policy.Open_Document .
+
+cat:policy.Closed_for_50_years_from_unknown_date rdf:type odrl:Policy, odrl:Offer;
+	rdfs:label "Closed for 50 years from unknown date"^^xsd:string ;
+	odrl:conflict odrl:perm;
+	odrl:profile nat:odrl-profile ;
+	odrl:inheritFrom cat:policy.Open_Document .
+
+cat:policy.Closed_for_75_years_from_unknown_date rdf:type odrl:Policy, odrl:Offer;
+	rdfs:label "Closed for 75 years from unknown date"^^xsd:string ;
+	odrl:conflict odrl:perm;
+	odrl:profile nat:odrl-profile ;
+	odrl:inheritFrom cat:policy.Open_Document .
+
+cat:policy.Closed_for_100_years_from_unknown_date rdf:type odrl:Policy, odrl:Offer;
+	rdfs:label "Closed for 100 years from unknown date"^^xsd:string ;
+	odrl:conflict odrl:perm;
+	odrl:profile nat:odrl-profile ;
+	odrl:inheritFrom cat:policy.Open_Document .
+
+cat:policy.Closed_for_40_years_from_unknown_date rdf:type odrl:Offer ;
+	rdfs:label "Closed for 40 years from unknown date"^^xsd:string ;
+	odrl:conflict odrl:perm ;
+	odrl:profile nat:odrl-profile ;
+	odrl:inheritFrom cat:policy.Closed_or_Retained_Document .
+
+cat:policy.Closed_for_47_years_from_unknown_date rdf:type odrl:Offer ;
+	rdfs:label "Closed Description"^^xsd:string ;
+	odrl:conflict odrl:perm ;
+	odrl:profile nat:odrl-profile ;
+	odrl:inheritFrom cat:policy.Closed_or_Retained_Document .
+
+cat:policy.Closed_for_50_years rdf:type odrl:Offer ;
+	rdfs:label "Closed for 50 years"^^xsd:string ;
+	odrl:conflict odrl:perm ;
+	odrl:profile nat:odrl-profile ;
+	odrl:inheritFrom cat:policy.Closed_or_Retained_Document .
+
+cat:policy.Normal_Closure_before_FOI_Act_0_years_from_unknown_date rdf:type odrl:Policy, odrl:Offer;
+	rdfs:label "Normal Closure before FOI Act: 0 years from unknown date"^^xsd:string ;
+	odrl:inheritFrom cat:policy.Closed_or_Retained_Document;
+	odrl:conflict odrl:perm;
+	odrl:profile nat:odrl-profile ;
+	odrl:permission [
+		rdf:type odrl:Permission;
+		odrl:assigner cat:The_National_Archives ;
+		odrl:assignee cat:The_Public ;
+		odrl:action odrl:readDocument
+	] .
+
+cat:policy.Normal_Closure_before_FOI_Act_30_years_from_unknown_date rdf:type odrl:Policy, odrl:Offer;
+	rdfs:label "Normal Closure before FOI Act: 30 years from unknown date"^^xsd:string ;
+	odrl:inheritFrom cat:policy.Closed_or_Retained_Document;
+	odrl:conflict odrl:perm;
+	odrl:profile nat:odrl-profile ;
+	odrl:permission [
+		rdf:type odrl:Permission;
+		odrl:assigner cat:The_National_Archives ;
+		odrl:assignee cat:The_Public ;
+		odrl:action odrl:readDocument
+	] .
+
+cat:policy.Normal_Closure_before_FOI_Act_30_years rdf:type odrl:Policy, odrl:Offer;
+	rdfs:label "Normal Closure before FOI Act: 30 years"^^xsd:string ;
+	odrl:inheritFrom cat:policy.Closed_or_Retained_Document;
+	odrl:conflict odrl:perm;
+	odrl:profile nat:odrl-profile .

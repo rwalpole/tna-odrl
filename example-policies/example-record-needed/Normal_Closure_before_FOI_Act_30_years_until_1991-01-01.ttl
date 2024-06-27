@@ -1,0 +1,27 @@
+@prefix nat:  <http://www.nationalarchives.gov.uk/> .
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix cat:  <http://cat.nationalarchives.gov.uk/> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix odrl: <http://www.w3.org/ns/odrl/2/> .
+
+# Closed For YY Policy as Natural Language Expression:-
+#======================================================
+# The National Archives (assigner) grants (permission) to the public (assignees) that a record realisation (asset)
+# may be read (action) after a initial delay period of 30 years until the record opening date (temporal constraint).
+# N.B. This policy is referenced from the asset and will be inferred as the target asset of this policy
+
+cat:policy.Normal_Closure_before_FOI_Act_until_1991-01-01
+    rdf:type         odrl:Policy, odrl:Offer ;
+    rdfs:label       "Normal Closure before FOI Act: until 1991-01-01" ;
+    odrl:conflict    odrl:perm ;
+    odrl:profile     nat:odrl-profile ;
+    odrl:inheritFrom cat:policy.Closed_or_Retained_Document ;
+    odrl:permission  [ rdf:type        odrl:Permission ;
+                       odrl:action     odrl:readDocument ;
+                       odrl:assignee   cat:The_Public ;
+                       odrl:assigner   cat:The_National_Archives ;
+                       odrl:constraint [ rdf:type          odrl:Constraint ;
+                                         odrl:leftOperand  odrl:dateTime ;
+                                         odrl:operator     odrl:gteq ;
+                                         odrl:rightOperand "1991-01-01Z"^^xsd:date ] ] .

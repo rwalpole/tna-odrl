@@ -1,0 +1,14 @@
+@prefix cat:  <http://cat.nationalarchives.gov.uk/> .
+@prefix nat:  <http://www.nationalarchives.gov.uk/> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix odrl: <http://www.w3.org/ns/odrl/2/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://cat.nationalarchives.gov.uk> .
+
+cat:policy.Open_immediately_from_date_of_transfer
+    rdf:type         odrl:Policy ;
+    rdfs:label       "Open immediately from date of transfer"^^xsd:string ;
+    odrl:conflict    odrl:perm ;
+    odrl:profile     nat:odrl-profile ;
+    odrl:inheritFrom cat:policy.Open_Document .

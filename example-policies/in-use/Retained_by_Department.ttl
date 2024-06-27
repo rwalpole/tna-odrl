@@ -1,0 +1,22 @@
+@prefix cat:  <http://cat.nationalarchives.gov.uk/> .
+@prefix nat:  <http://www.nationalarchives.gov.uk/> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix odrl: <http://www.w3.org/ns/odrl/2/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://cat.nationalarchives.gov.uk/> .
+
+# Retained by Department Policy as Natural Language Expression
+# ============================================================
+# The National Archives (assigner) denies (prohibition) The Public (assignees)
+# that a record realisation (asset) may be read (action).
+#
+# N.B. the prohibition is inherited from the Closure policy.
+# This is a semantic policy in that only adds meaning to the Closure policy and does not add any permissions or prohibitions. 
+
+cat:policy.Retained_by_Department
+    rdf:type         odrl:Policy ;
+    rdfs:label       "Retained by Department"^^xsd:string ;
+    odrl:conflict    odrl:perm ;
+    odrl:profile     nat:odrl-profile ;
+    odrl:inheritFrom cat:policy.Closed_or_Retained_Document .

@@ -1,0 +1,29 @@
+@prefix cat:  <http://cat.nationalarchives.gov.uk/> .
+@prefix nat:  <http://www.nationalarchives.gov.uk/> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix odrl: <http://www.w3.org/ns/odrl/2/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://cat.nationalarchives.gov.uk> .
+
+# Open Immediately as Natural Language Expression:-
+#==================================================
+# The National Archives (assigner) grants (permission) to the public (assignees) that a record realisation (asset)
+# may be read (action) with effect from the record opening date (temporal constraint).
+#
+# N.B. the prohibition is inherited from the Closure policy.
+
+cat:policy.Open_immediately_from_2021-07-26
+    rdf:type         odrl:Policy ;
+    rdfs:label       "Open immediately from 2021-07-06"^^xsd:string ;
+    odrl:conflict    odrl:perm ;
+    odrl:profile     nat:odrl-profile ;
+    odrl:inheritFrom cat:policy.Closed_or_Retained_Document ;
+    odrl:permission  [ rdf:type        odrl:Permission ;
+                       odrl:assigner   cat:The_National_Archives ;
+                       odrl:assignee   cat:The_Public ;
+                       odrl:action     odrl:readDocument ;
+                       odrl:constraint [ rdf:type          odrl:Constraint ;
+                                         odrl:leftOperand  odrl:dateTime ;
+                                         odrl:operator     odrl:gteq ;
+                                         odrl:rightOperand "2021-07-26"^^xsd:date ] ] .

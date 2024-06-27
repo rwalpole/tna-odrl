@@ -1,0 +1,37 @@
+@prefix nat:  <http://www.nationalarchives.gov.uk/> .
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix cat:  <http://cat.nationalarchives.gov.uk/> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+@prefix odrl: <http://www.w3.org/ns/odrl/2/> .
+
+cat:ADM.2021.21L1TH.P.1-policy
+    rdf:type         odrl:Offer, odrl:Policy ;
+    odrl:conflict    odrl:perm ;
+    odrl:permission  [
+                         rdf:type        odrl:Permission ;
+                         odrl:action     odrl:readDocument ;
+                         odrl:assignee   cat:The_Public ;
+                         odrl:assigner   cat:The_National_Archives ;
+                         odrl:constraint [
+                                             rdf:type          odrl:Constraint ;
+                                             odrl:leftOperand  odrl:dateTime ;
+                                             odrl:operator     odrl:gteq ;
+                                             odrl:rightOperand "2015-07-14"^^xsd:date
+                                         ] ;
+                         odrl:target     cat:ADM.2021.21L1TH.P.1
+                     ] ;
+    odrl:permission  [
+                         rdf:type      odrl:Permission ;
+                         odrl:action   odrl:readDescription ;
+                         odrl:assignee cat:The_Public ;
+                         odrl:assigner cat:The_National_Archives ;
+                         odrl:target   cat:ADM.2021.21L1TH.P.1
+                     ] ;
+    odrl:profile     nat:odrl-profile ;
+    odrl:prohibition [
+                         rdf:type      odrl:Prohibition ;
+                         odrl:action   odrl:read ;
+                         odrl:assignee cat:The_Public ;
+                         odrl:assigner cat:The_National_Archives ;
+                         odrl:target   cat:ADM.2021.21L1TH.P.1
+                     ] .

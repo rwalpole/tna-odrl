@@ -1,0 +1,33 @@
+@prefix cat:  <http://cat.nationalarchives.gov.uk/> .
+@prefix nat:  <http://www.nationalarchives.gov.uk/> .
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+@prefix odrl: <http://www.w3.org/ns/odrl/2/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://cat.nationalarchives.gov.uk> .
+
+# Closed For YY Policy as Natural Language Expression:-
+#======================================================
+# The National Archives (assigner) grants (permission) to the public (assignees) that a record realisation (asset)
+# may be read (action) after a delay period of 30 years from the record end date (temporal constraint).
+# N.B. This policy is referenced from the asset and will be inferred as the target asset of this policy
+
+cat:policy.Normal_Closure_before_FOI_Act_30_years_from_1994-12-31
+    rdf:type         odrl:Policy, odrl:Offer ;
+    rdfs:label       "Normal Closure before FOI Act: 30 years from 1994-12-31"^^xsd:string ;
+    odrl:inheritFrom cat:policy.Closed_or_Retained_Document ;
+    odrl:conflict    odrl:perm ;
+    odrl:profile     nat:odrl-profile ;
+    odrl:permission  [ rdf:type        odrl:Permission ;
+                       odrl:assigner   cat:The_National_Archives ;
+                       odrl:assignee   cat:The_Public ;
+                       odrl:action     odrl:readDocument ;
+                       odrl:constraint [ rdf:type         odrl:LogicalConstraint ;
+                                         odrl:andSequence ( [ rdf:type          odrl:Constraint ;
+                                                              odrl:leftOperand  odrl:dateTime ;
+                                                              odrl:operator     odrl:gt ;
+                                                              odrl:rightOperand "1994-12-31"^^xsd:date ]
+                                                            [ rdf:type odrl:Constraint ;
+                                                              odrl:leftOperand odrl:delayPeriod ;
+                                                              odrl:operator odrl:eq ;
+                                                              odrl:rightOperand "P30Y"^^xsd:duration ] ) ] ] .

@@ -1,0 +1,18 @@
+@prefix cat:    <http://cat.nationalarchives.gov.uk/> .
+@prefix premis: <http://www.loc.gov/premis/rdf/v3/> .
+@prefix dct:    <http://purl.org/dc/terms/> .
+@prefix odrl:   <http://www.w3.org/ns/odrl/2/> .
+@prefix schema: <https://schema.org/> .
+
+cat:HW.2021.2G3RRN.P.1
+    a                 premis:IntellectualEntity ;
+    dct:identifier    "HW.2021.2G3RRN.P.1" ;
+    dct:accessRights  [
+                          a              dct:RightsStatement ;
+                          odrl:hasPolicy cat:policy.Open_Description, cat:policy.Retained_Until_2003-01-01
+                      ] ;
+    schema:identifier [
+                          a                 schema:identifier ;
+                          schema:propertyID <http://www.nationalarchives.gov.uk/ont.ccr> ;
+                          schema:value      "HW 12/321/19"
+                      ] .

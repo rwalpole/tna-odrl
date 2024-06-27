@@ -1,0 +1,19 @@
+@prefix cat:    <http://cat.nationalarchives.gov.uk/> .
+@prefix premis: <http://www.loc.gov/premis/rdf/v3/> .
+@prefix dct:    <http://purl.org/dc/terms/> .
+@prefix odrl:   <http://www.w3.org/ns/odrl/2/> .
+@prefix schema: <https://schema.org/> .
+
+cat:CAB.2021.2L57T3.P.1
+    a                 premis:IntellectualEntity ;
+    dct:identifier    "CAB.2021.2L57T3.P.1" ;
+    dct:accessRights  [
+                          a              dct:RightsStatement ;
+                          odrl:hasPolicy cat:policy.Closed_Description, cat:policy.Retained_by_Department
+                      ] ;
+    schema:identifier [
+                          a                 schema:identifier ;
+                          schema:propertyID <http://www.nationalarchives.gov.uk/ont.ccr> ;
+                          schema:value      "CAB 130/184/GEN761"
+                      ] ;
+.

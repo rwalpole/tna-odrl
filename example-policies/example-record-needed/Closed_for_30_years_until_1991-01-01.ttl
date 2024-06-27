@@ -1,0 +1,29 @@
+@prefix cat:  <http://cat.nationalarchives.gov.uk/> .
+@prefix nat:  <http://www.nationalarchives.gov.uk/> .
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+@prefix odrl: <http://www.w3.org/ns/odrl/2/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://cat.nationalarchives.gov.uk> .
+
+# Closed For YY Policy as Natural Language Expression:-
+#======================================================
+# The National Archives (assigner) grants (permission) to the public (assignees) that a record realisation (asset)
+# may be read (action) after a delay period of YY years until the record opening date (temporal constraint).
+
+# N.B. This policy is referenced from the asset and will be inferred as the target asset of this policy
+
+cat:policy.Closed_for_30_years_until_1991-01-01
+    rdf:type         odrl:Policy, odrl:Offer ;
+    rdfs:label       "Closed for 30 years until 1991-01-01"^^xsd:string ;
+    odrl:conflict    odrl:perm ;
+    odrl:profile     nat:odrl-profile ;
+    odrl:inheritFrom cat:policy.Closed_or_Retained_Document ;
+    odrl:permission  [ rdf:type        odrl:Permission ;
+                       odrl:assigner   cat:The_National_Archives ;
+                       odrl:assignee   cat:The_Public ;
+                       odrl:action     odrl:readDocument ;
+                       odrl:constraint [ rdf:type          odrl:Constraint ;
+                                         odrl:leftOperand  odrl:dateTime ;
+                                         odrl:operator     odrl:gteq ;
+                                         odrl:rightOperand "1991-01-01"^^xsd:date ] ] .

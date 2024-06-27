@@ -1,0 +1,22 @@
+@prefix cat:  <http://cat.nationalarchives.gov.uk/> .
+@prefix nat:  <http://www.nationalarchives.gov.uk/> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix odrl: <http://www.w3.org/ns/odrl/2/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://cat.nationalarchives.gov.uk> .
+
+# Closure Policy as Natural Language Expression:-
+#================================================
+# The National Archives (assigner) denies (prohibition) The Public (assignees) that a record description or realisation (asset)
+# may be read (action)
+
+cat:policy.Closure
+    rdf:type         odrl:Policy, odrl:Offer ;
+    rdfs:label       "Closure"^^xsd:string ;
+    odrl:conflict    odrl:perm ;
+    odrl:profile     nat:odrl-profile ;
+    odrl:prohibition [ rdf:type      odrl:Prohibition ;
+                       odrl:assigner cat:The_National_Archives ;
+                       odrl:assignee cat:The_Public ;
+                       odrl:action   odrl:read ] .
